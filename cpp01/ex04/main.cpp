@@ -36,28 +36,32 @@ bool	pars_args(int argc, char **argv, std::ifstream &src, std::ofstream &dst)
 
 int	main(int argc, char **argv)
 {
-	std::stringstream	*file;
 	std::ifstream	src;
 	std::ofstream	dst;
 	std::string		content;
+	char			tmp[201];
 	std::size_t		index;
 
 	if (!pars_args(argc, argv, src, dst))
 		return (1);
-	
-	file = src.rdbuf();
-	content = file.str();
+	while (!src.eof())
+	{
+		src.getline(tmp, 200);
+			content += tmp;
+		if (strlen(tmp) < 200)
+			content += '\n';
+	}
 	index = 0;
-	do
+	while (index != std::string::npos && index < content.size())
 	{
 		index = content.find(argv[2], index);
 		if (index != std::string::npos)
 		{
-			std::cout << index << std::endl;
-			content.replace(index, strlen(argv[3]), argv[3]);
+			content.erase(index, strlen(argv[2]));
+			content.insert(index, argv[3]);
 			index += strlen(argv[3]);
 		}
-	} while (index != std::string::npos && index < content.size());
+	}
 	dst << content;
 	return (0);
 }
