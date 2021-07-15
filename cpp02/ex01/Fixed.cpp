@@ -14,8 +14,18 @@ Fixed::Fixed(int const value) : _value(value << Fixed::_point_pos)
 
 Fixed::Fixed(float const value)
 {
+	int	div_value;
+	int	i;
+
 	this->_value = (int) value << Fixed::_point_pos;
-	this->_value += (value - (int) value) * pow(2, Fixed::_point_pos);
+	i = 1;
+	div_value = 1;
+	while (i < Fixed::_point_pos)
+	{
+		div_value *= 2;
+		i++;
+	}
+	this->_value += (value - (int) value) * (float) div_value;
 	std::cout << "Float constructor called" << std::endl;
 }
 
@@ -49,15 +59,24 @@ void	Fixed::setRawBits(int const value)
 
 int	Fixed::toInt(void) const
 {
-	return (this->_value >> Fixed::_point_pos);
+	return (roundf(this->toFloat()));
 }
 
 float	Fixed::toFloat(void) const
 {
-	float ret;
+	float	ret;
+	int		i;
+	int		div_value;
 
 	ret = this->_value >> Fixed::_point_pos;
-	ret += (this->_value - ((int)ret << 8)) / pow(2, Fixed::_point_pos);
+	i = 1;
+	div_value = 1;
+	while (i < Fixed::_point_pos)
+	{
+		div_value *= 2;
+		i++;
+	}
+	ret += (this->_value - ((int)ret << 8)) / (float) div_value;
 	return (ret);
 }
 
