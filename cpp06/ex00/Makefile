@@ -1,13 +1,9 @@
-NAME = bureau
+NAME = conv
 
-HEADERS = \
-		Bureaucrat.hpp \
-		Form.hpp
+HEADERS =
 
 SRCS = \
-		main.cpp \
-		Form.cpp \
-		Bureaucrat.cpp
+		main.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 

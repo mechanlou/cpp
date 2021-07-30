@@ -1,13 +1,13 @@
-NAME = bureau
+NAME = identify
 
-HEADERS = \
-		Bureaucrat.hpp \
-		Form.hpp
+HEADERS =	Base.hpp \
+			A.hpp \
+			B.hpp \
+			C.hpp
 
 SRCS = \
 		main.cpp \
-		Form.cpp \
-		Bureaucrat.cpp
+		Base.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 

@@ -2,11 +2,19 @@ NAME = bureau
 
 HEADERS = \
 		Bureaucrat.hpp \
+		Intern.hpp \
+		PresidentialPardonForm.hpp \
+		RobotomyRequestForm.hpp \
+		ShrubberyCreationForm.hpp \
 		Form.hpp
 
 SRCS = \
 		main.cpp \
 		Form.cpp \
+		Intern.cpp \
+		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp \
+		ShrubberyCreationForm.cpp \
 		Bureaucrat.cpp
 
 OBJS = ${SRCS:.cpp=.o}

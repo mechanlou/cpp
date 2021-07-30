@@ -14,7 +14,7 @@ class	Bureaucrat
 
 		virtual const char	*what(void) const throw()
 		{
-			return ("Error, max grade is 1");
+			return ("Error, the grade is too high");
 		}
 	};
 
@@ -24,7 +24,7 @@ class	Bureaucrat
 
 		virtual const char	*what(void) const throw()
 		{
-			return ("Error, min grade is 150");
+			return ("Error, the grade is too low");
 		}
 	};
 

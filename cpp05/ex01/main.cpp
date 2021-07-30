@@ -1,55 +1,25 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 int main(void)
 {
-	Bureaucrat	*a = new Bureaucrat();
-	Bureaucrat	b = Bureaucrat("filip", 2);
-	Bureaucrat	c;
-	Bureaucrat	*d;
+	Bureaucrat	pierre = Bureaucrat("Pierre", 23);
+	Bureaucrat	paul = Bureaucrat("Paul", 78);
+	Bureaucrat	jacques = Bureaucrat("Jacques", 149);
 
-	try
-	{
-		std::cout << b << std::endl;
-		b.incGrade();
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	
-	try
-	{
-		std::cout << b << std::endl;
-		b.incGrade();
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	Form	papier = Form("Papier", 79, 150);
+	Form	feuille = Form("Feuille", 38, 150);
 
-	try
-	{
-		std::cout << *a << std::endl;
-		a->decGrade();
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	jacques.signForm(papier);
+	paul.signForm(papier);
+	pierre.signForm(papier);
 
-	std::cout << "Trying to copy b into c : " << (c = b) << std::endl;
+	std::cout << std::endl;
 
-	try
-	{
-		std::cout << "Trying to create Bureaucrat with grade to high" << std::endl;
-		d = new Bureaucrat("pipo", 666);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
-	delete a;
+	jacques.signForm(feuille);
+	paul.signForm(feuille);
+	pierre.signForm(feuille);
+	pierre.signForm(feuille);
 	return (0);
 }

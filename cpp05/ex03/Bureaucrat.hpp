@@ -1,4 +1,4 @@
-	#ifndef BUREAUCRAT_HPP
+#ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
 #include <string>
@@ -41,6 +41,7 @@ class	Bureaucrat
 	void			incGrade(void) throw(GradeTooHighException);
 	void			decGrade(void) throw(GradeTooLowException);
 	void			signForm(Form &form) const;
+	void			execForm(Form const &form) const;
 
 	private :
 

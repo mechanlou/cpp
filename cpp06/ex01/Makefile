@@ -1,13 +1,11 @@
-NAME = bureau
+NAME = serial
 
-HEADERS = \
-		Bureaucrat.hpp \
-		Form.hpp
+HEADERS =
 
 SRCS = \
 		main.cpp \
-		Form.cpp \
-		Bureaucrat.cpp
+		serialize.cpp \
+		deserialize.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
