@@ -1,8 +1,8 @@
-NAME = span
+NAME = mutant
 
-HEADERS = span.hpp
+HEADERS = mutantstack.hpp
 
-SRCS = span.cpp \
+SRCS = mutantstack.cpp \
 		main.cpp
 
 OBJS = ${SRCS:.cpp=.o}

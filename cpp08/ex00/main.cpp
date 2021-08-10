@@ -5,12 +5,23 @@
 
 int main(void)
 {
-	std::list<int> list;
+	std::vector<int>	vec;
+	std::list<int>		lst;
 
-	list.push_back(2);
-	list.push_back(4);
-	list.push_back(6);
-	std::cout << easyfind(list, 4) << std::endl;
-	std::cout << easyfind(list, 5) << std::endl;
+	vec.push_back(2);
+	vec.push_back(-4);
+	vec.push_back(6);
+	
+	lst.push_back(2);
+	lst.push_back(-4);
+	lst.push_back(6);
+
+	std::cout << "vector :" << std::endl;
+	std::cout << easyfind(vec, -4) << std::endl;
+	std::cout << easyfind(vec, 12) << std::endl;
+	
+	std::cout << "list :" << std::endl;
+	std::cout << easyfind(lst, 2) << std::endl;
+	std::cout << easyfind(lst, 2123) << std::endl;
 	return (true);
 }

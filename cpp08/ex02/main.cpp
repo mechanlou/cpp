@@ -1,46 +1,60 @@
+#include "mutantstack.hpp"
+#include <list>
 #include <iostream>
-#include "span.hpp"
 
-int main(void)
+int main()
 {
-	Span				test(5);
-	Span				stuff(20000);
-	Span				gotta_fail(19999);
-	std::vector<int>	src(20000, 666);
-
-	test.addNumber(5);
-	test.addNumber(3);
-	test.addNumber(17);
-	test.addNumber(9);
-	test.addNumber(11);
-
-	std::cout << test.shortestSpan() << std::endl;
-	std::cout << test.longestSpan() << std::endl;
-
-	try
-	{
-		test.addNumber(1995);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	std::list<int>		lst;
+	MutantStack<int>    mstack;
+	mstack.push(5);
+	mstack.push(17);
+	lst.push_back(5);
+	lst.push_back(17);
+	std::cout << "mstack top : " << mstack.top() << std::endl;
+	std::cout << "lst back : " << lst.back() << std::endl;
 	
-	std::cout << std::endl;
+	mstack.pop();
+	lst.pop_back();
+	std::cout << "mstack size : " << mstack.size() << std::endl;
+	std::cout << "lst size : " << lst.size() << std::endl;
 
-	stuff.addRange(src.begin(), src.end());
-	std::cout << stuff.shortestSpan() << std::endl;
-	std::cout << stuff.longestSpan() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	mstack.push(0);
+	lst.push_back(3);
+	lst.push_back(5);
+	lst.push_back(737);
+	lst.push_back(0);
 
-	std::cout << std::endl;
-
-	try
+	MutantStack<int>::iterator mstack_it = mstack.begin();
+	MutantStack<int>::iterator mstack_end = mstack.end();
+	std::cout << "mstack content :" << std::endl;
+	while (mstack_it != mstack_end)
 	{
-		gotta_fail.addRange(src.begin(), src.end());
+		std::cout << *mstack_it << std::endl;
+		++mstack_it;
 	}
-	catch(const std::exception& e)
+	std::list<int>::iterator lst_it = lst.begin();
+	std::list<int>::iterator lst_end = lst.end();
+	std::cout << "lst content :" << std::endl;
+	while (lst_it != lst_end)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << *lst_it << std::endl;
+		++lst_it;
 	}
-	return (0);
+	std::stack<int> s(mstack);
+	MutantStack<int> copy(mstack);
+	MutantStack<int> assign;
+
+	assign = copy;
+	MutantStack<int>::iterator assign_it = assign.begin();
+	MutantStack<int>::iterator assign_end = assign.end();
+	std::cout << "assigned content :" << std::endl;
+	while (assign_it != assign_end)
+	{
+		std::cout << *assign_it << std::endl;
+		++assign_it;
+	}
+	return 0;
 }
